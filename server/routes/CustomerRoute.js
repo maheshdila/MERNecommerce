@@ -9,3 +9,4 @@ router.put('/update/:id', customerController.update);
 router.get('/find-all', customerController.findAll);
 router.get('/find-count', customerController.findCount);
 module.exports=router;
+//documentation

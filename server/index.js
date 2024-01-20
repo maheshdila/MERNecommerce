@@ -23,9 +23,12 @@ app.listen(port,()=>{
 
 
 //=================================
+const productRoute = require('./routes/ProductRoute');
 const customerRoute = require('./routes/CustomerRoute');
 //const customerRoute = require('./routes/CustomerRoute');
+
 //=================================
 
 
 app.use('/api/v1/customer',customerRoute);
+app.use('/api/v1/product',productRoute);

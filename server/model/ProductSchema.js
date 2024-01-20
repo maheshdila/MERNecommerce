@@ -20,6 +20,8 @@ const ProductSchema = new mongoose.Schema({   //create schema
         type: Number,
         required: true
     }
+
 });
+ProductSchema.index({ name: 'text', description: 'text' });
 
 module.exports = mongoose.model('product', ProductSchema);   //export model
