@@ -1,0 +1,12 @@
+const express = require('express');
+const orderController = require('../controller/OrderController');
+//const verifyUser = require('../middleware/AuthMiddleware');
+const router = express.Router();
+router.post('/create', orderController.create);
+router.get('/find-by-id', orderController.findById);
+router.delete('/delete-by-id', orderController.deleteById);
+router.put('/update', orderController.update);
+router.get('/find-all', orderController.findAll);
+router.get('/find-count', orderController.findAllCount);
+router.get('/find-income', orderController.findAllIncome);
+module.exports=router;

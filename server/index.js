@@ -25,6 +25,8 @@ app.listen(port,()=>{
 //=================================
 const productRoute = require('./routes/ProductRoute');
 const customerRoute = require('./routes/CustomerRoute');
+const orderRoute = require('./routes/OrderRoute');
+const userRoute = require('./routes/UserRoute');
 //const customerRoute = require('./routes/CustomerRoute');
 
 //=================================
@@ -32,3 +34,5 @@ const customerRoute = require('./routes/CustomerRoute');
 
 app.use('/api/v1/customer',customerRoute);
 app.use('/api/v1/product',productRoute);
+app.use('/api/v1/orders',orderRoute);
+app.use('/api/v1/users',userRoute);
