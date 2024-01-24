@@ -15,7 +15,7 @@ function Home() {
                 <Carousel>
                     <Carousel.Item interval={2000}>
                         <img src="https://cdn.hostadvice.com/2023/03/eCommerce-Website-Development.png"
-                             className="d-block  h-50 w-100" alt="adz_01"/>
+                             className="d-block d-flex flex-fill h-50 w-100" alt="adz_01"/>
                     </Carousel.Item>
                     <Carousel.Item interval={2000}>
                         <img
@@ -29,22 +29,24 @@ function Home() {
                     </Carousel.Item>
                 </Carousel>
             </div>
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-12 col-sm-6 col-md-4 col-lg-3'>
-                        <DefaultCard/>
-                    </div>
-                    <div className='col-12 col-sm-6 col-md-4 col-lg-3'>
-                        <DefaultCard/>
-                    </div>
-                    <div className='col-12 col-sm-6 col-md-4 col-lg-3'>
-                        <DefaultCard/>
-                    </div>
-                    <div className='col-12 col-sm-6 col-md-4 col-lg-3'>
-                    <DefaultCard/>
-                    </div>
-                </div>
+            <br></br>
+            <div className='container-fluid align-content-lg-center justify-content-between d-flex flex-wrap col-lg-8 col-md-4 col-sm-2 '>
+                <DefaultCard/>
+                <DefaultCard/>
+                <DefaultCard/>
+                <DefaultCard/>
+                <DefaultCard/>
             </div>
+            <br></br>
+            <div className='container-fluid align-content-lg-center justify-content-between d-flex flex-wrap col-lg-8 col-md-4 col-sm-2 '>
+                <DefaultCard/>
+                <DefaultCard/>
+                <DefaultCard/>
+                <DefaultCard/>
+                <DefaultCard/>
+            </div>
+
+
         </>
     );
 }
