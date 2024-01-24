@@ -1,9 +1,9 @@
 import "./App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
-import Home from "./components/cards/Home.tsx";
-import Product from "./components/cards/Product.tsx";
-import Login from "./components/cards/Login.tsx";
+import Home from "./components/Home.tsx";
+import Product from "./components/Product.tsx";
+import Login from "./components/Login.tsx";
 
 function App() {
     return <>
