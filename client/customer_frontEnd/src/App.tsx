@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
+import Home from "./components/cards/Home.tsx";
+import Product from "./components/cards/Product.tsx";
+import Login from "./components/cards/Login.tsx";
 
 function App() {
-  const [count, setCount] = useState(0)
+    return <>
+        <Router>
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark ">
+                <div className="container-fluid justify-content-center">
+                    <div className="navbar-brand">
+                        <img src="https://static.wixstatic.com/media/61ce2a_2a8fd5098c89428b862f3a788ead9129~mv2.png/v1/fit/w_2500,h_1330,al_c/61ce2a_2a8fd5098c89428b862f3a788ead9129~mv2.png"
+                             alt="" className='logo'/>
+                    </div>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarTogglerDemo03"
+                            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+                    <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+                        <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li className="nav-item ">
+                                <Link className="nav-link active text-success fs-4 bold-on-hover" aria-current="page" to='/' >Home</Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link text-success fs-4 bold-on-hover" to="/product">Product</Link>
+                            </li>
+                            <li>
+                                <form className="d-flex">
+                                    <input className="form-control me-2" type="search" placeholder="Search"
+                                           aria-label="Search" style={{ marginTop: '10px' }}/>
+                                    <button className="btn btn-outline-success" type="submit" style={{ marginTop: '10px' }}>Search</button>
+                                </form>
+                            </li>
+                        </ul>
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li className="nav-item ">
+                                <Link className="nav-link active text-success fs-4 bold-on-hover "  to="/cart" >Cart</Link>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link text-success fs-4 bold-on-hover" href="/login">Login</a>
+                            </li>
+                        </ul>
+                        //form was here
+                    </div>
+                </div>
+            </nav>
+            <Routes>
+                <Route path='/' element={<Home/>}></Route>
+                <Route path='/product' element={<Product/>}></Route>
+                <Route path='/login' element={<Login/>}></Route>
+                <Route path='/cart' element={<Login/>}></Route>
+
+            </Routes>
+        </Router>
     </>
-  )
 }
 
-export default App
+export default App;
