@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
 import Home from "./components/Home.tsx";
 import Product from "./components/Product.tsx";
-import Login from "./components/Login/Login.tsx";
+import Login from "./components/Login/Register";
 import Footer from "./components/cards/footer";
 
 

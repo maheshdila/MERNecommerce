@@ -22,11 +22,7 @@ function Login () {
                             <label htmlFor="">Password</label>
                         </div>
 
-                        <div className="remember">
-                            <label htmlFor="">
-                                <input type="checkbox"/>I agree to terms and conditions
-                            </label>
-                        </div>
+
 
                         <button type="button" className="button_1">
                             Login
