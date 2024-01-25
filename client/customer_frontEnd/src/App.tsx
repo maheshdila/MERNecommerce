@@ -4,11 +4,13 @@ import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
 import Home from "./components/Home.tsx";
 import Product from "./components/Product.tsx";
 import Login from "./components/Login.tsx";
+import Footer from "./components/cards/footer";
+
 
 function App() {
     return <>
         <Router>
-            <nav className="navbar navbar-expand-lg navbar-light bg-dark ">
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark  ">
                 <div className="container-fluid justify-content-center">
                     <div className="navbar-brand">
                         <img src="https://static.wixstatic.com/media/61ce2a_2a8fd5098c89428b862f3a788ead9129~mv2.png/v1/fit/w_2500,h_1330,al_c/61ce2a_2a8fd5098c89428b862f3a788ead9129~mv2.png"
@@ -23,25 +25,25 @@ function App() {
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item ">
-                                <Link className="nav-link active text-success fs-4 bold-on-hover" aria-current="page" to='/' >Home</Link>
+                                <Link className="nav-link active text-primary fs-4 bold-on-hover" aria-current="page" to='/' >Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link text-success fs-4 bold-on-hover" to="/product">Product</Link>
+                                <Link className="nav-link text-primary fs-4 bold-on-hover" to="/product">Product</Link>
                             </li>
                             <li>
                                 <form className="d-flex">
                                     <input className="form-control me-2" type="search" placeholder="Search"
                                            aria-label="Search" style={{ marginTop: '10px' }}/>
-                                    <button className="btn btn-outline-success" type="submit" style={{ marginTop: '10px' }}>Search</button>
+                                    <button className="btn btn-outline-primary" type="submit" style={{ marginTop: '10px' }}>Search</button>
                                 </form>
                             </li>
                         </ul>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item ">
-                                <Link className="nav-link active text-success fs-4 bold-on-hover "  to="/cart" >Cart</Link>
+                                <Link className="nav-link active text-primary fs-4 bold-on-hover "  to="/cart" >Cart</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-success fs-4 bold-on-hover" href="/login">Login</a>
+                                <a className="nav-link text-primary fs-4 bold-on-hover" href="/login">Login</a>
                             </li>
                         </ul>
                         //form was here
@@ -56,6 +58,10 @@ function App() {
 
             </Routes>
         </Router>
+        <br></br>
+        <br></br>
+        <br></br>
+        <Footer/>
     </>
 }
 
