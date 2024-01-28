@@ -12,7 +12,7 @@ function App() {
   return (
     <Router>
       <div>
-        <nav className="navbar navbar-expand-lg bg-dark">
+        <nav className="navbar navbar-expand-lg bg-light-subtle">
           <div className="container-fluid">
             <div className="navbar-brand">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Wattpad_logo.png/2560px-Wattpad_logo.png"

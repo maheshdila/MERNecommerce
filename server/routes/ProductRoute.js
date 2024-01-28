@@ -1,9 +1,11 @@
 const express = require('express');
 const productController = require('../controller/ProductController');
+const authenticateUser = require("../middlewares/AuthenticationMiddleware");
+const authorizeUser = require("../middlewares/AuthorizationMiddleware");
 //const verifyUser = require('../middleware/AuthMiddleware');
 
 const router = express.Router();
-router.post('/create', productController.create);
+router.post('/create',authenticateUser,authorizeUser(['admin']), productController.create);
 router.get('/find-by-id/:id', productController.findById);
 router.delete('/delete-by-id/:id', productController.deleteById);
 router.put('/update', productController.update);

@@ -69,10 +69,13 @@ const Product:React.FC = ()=>{
                 const imgRef =  ref(imageDb,`files/${Math.random()}-${image.name}`)
                 uploadBytes(imgRef,image).then(value=>{
                     console.log(value)
-                    getDownloadURL(value.ref).then(url=>{
+                    getDownloadURL(value.ref).then(async url => {
                         //setImageUrl(url)
                         console.log(url);
-                        imageUrl=url;
+                        
+                        await AxiosInstance.post('/products/create', {
+                            name, description, unitPrice, qtyOnHand, image: url
+                        });
                     })
                 })
 
@@ -82,9 +85,9 @@ const Product:React.FC = ()=>{
         }
 
         try{
-            await AxiosInstance.post('/products/create',{
-                name,description,unitPrice,qtyOnHand,image:imageUrl
-            });
+            //await AxiosInstance.post('/products/create',{
+            //    name,description,unitPrice,qtyOnHand,image:imageUrl
+            //});
             setName('');
             setDescription('');
             setQtyOnHand('');
