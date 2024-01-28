@@ -3,15 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
 import Home from "./components/Home.tsx";
 import Product from "./components/Product.tsx";
-import Login from "./components/Login/Register";
-import Footer from "./components/cards/footer";
+import Login from "./components/Login/Login";
+
+import Register from "./components/Login/Register";
 
 
 function App() {
     return <>
         <Router>
-            <nav className="navbar navbar-expand-lg navbar-light bg-dark  ">
-                <div className="container-fluid justify-content-center">
+
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark ">
+                <div className="container-fluid justify-content-center ">
                     <div className="navbar-brand">
                         <img src="https://static.wixstatic.com/media/61ce2a_2a8fd5098c89428b862f3a788ead9129~mv2.png/v1/fit/w_2500,h_1330,al_c/61ce2a_2a8fd5098c89428b862f3a788ead9129~mv2.png"
                              alt="" className='logo'/>
@@ -43,25 +45,23 @@ function App() {
                                 <Link className="nav-link active text-primary fs-4 bold-on-hover "  to="/cart" >Cart</Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link text-primary fs-4 bold-on-hover" href="/login">Login</a>
+                                <Link className="nav-link text-primary fs-4 bold-on-hover" to="/login">Login</Link>
                             </li>
                         </ul>
                         //form was here
                     </div>
                 </div>
             </nav>
+
             <Routes>
                 <Route path='/' element={<Home/>}></Route>
                 <Route path='/product' element={<Product/>}></Route>
                 <Route path='/login' element={<Login/>}></Route>
                 <Route path='/cart' element={<Login/>}></Route>
+                <Route path='/register' element={<Register/>}></Route>
 
             </Routes>
         </Router>
-        <br></br>
-        <br></br>
-        <br></br>
-        <Footer/>
     </>
 }
 

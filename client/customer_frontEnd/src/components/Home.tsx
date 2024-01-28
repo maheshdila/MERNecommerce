@@ -4,6 +4,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from "react-bootstrap";
 import DefaultCard from "./cards/default_card";
+import Footer from "./cards/footer";
 
 //import { Carousel } from 'react-bootstrap';
 
@@ -95,6 +96,10 @@ function Home() {
                     price={234.5}
                 />
             </div>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Footer/>
 
 
         </>

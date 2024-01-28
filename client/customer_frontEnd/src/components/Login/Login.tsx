@@ -31,7 +31,7 @@ function Login () {
                         <div className="login-register">
                             <p>
                                 Don't have an account?{" "}
-                                <Link to="" className="register-link">
+                                <Link to="/register" className="register-link">
                                     Register
                                 </Link>
                             </p>
