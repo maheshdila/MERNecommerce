@@ -16,7 +16,8 @@ const register = (req,resp) => {
                     fullName:req.body.fullName,
                     password:hash,
                     email:req.body.email,
-                    userType: req.body.userType,
+                    //userType: req.body.userType,
+                    userType:'customer',
                     activeState:true
                 });
                 user.save().then(saveResponse=>{

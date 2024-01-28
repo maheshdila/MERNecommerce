@@ -4,7 +4,9 @@ const secretKey=process.env.SECRET_KEY;
 
 
 const authorize = (requiredRoles) => {
+
     return (req, res, next) => {
+        next();//remove this line
         let token = req.headers.authorization;
         console.log(token);
         token = token.slice(7);

@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 require('dotenv').config();
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const port = process.env.SERVER_PORT | 3000;
 const app = express();
@@ -11,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
-
+app.use(cors());
 try{
 mongoose.connect('mongodb://127.0.0.1:27017/MERNStackDB');
 app.listen(port,()=>{
@@ -33,6 +34,6 @@ const userRoute = require('./routes/UserRoute');
 
 
 app.use('/api/v1/customer',customerRoute);
-app.use('/api/v1/product',productRoute);
+app.use('/api/v1/products',productRoute);
 app.use('/api/v1/orders',orderRoute);
 app.use('/api/v1/users',userRoute);

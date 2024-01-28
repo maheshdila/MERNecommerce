@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const secretKey=process.env.SECRET_KEY;
 
 const verifyToken= (req,res,next)=>{
+    next();//remove this line
     let token = req.headers.authorization;
     token = token.slice(7);
     console.log(token);
