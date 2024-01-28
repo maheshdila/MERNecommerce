@@ -17,7 +17,7 @@ const register = (req,resp) => {
                     password:hash,
                     email:req.body.email,
                     //userType: req.body.userType,
-                    userType:'customer',
+                    userType:'admin',
                     activeState:true
                 });
                 user.save().then(saveResponse=>{
@@ -80,7 +80,10 @@ const login = (req,resp) => {
 
                 if(result){
                     const payload={
-                        email:selectedUser.email
+                        email:selectedUser.email,
+                        userType: selectedUser.userType
+
+
                     }
 
                     const secretKey=process.env.SECRET_KEY;
