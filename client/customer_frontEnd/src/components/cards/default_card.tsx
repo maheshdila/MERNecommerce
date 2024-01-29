@@ -6,8 +6,10 @@ interface DefaultCardData {
 }
 function DefaultCard(props:DefaultCardData){
     return (
-    <div className="card" style={{width: "18rem"}}>
-        <img src={props.thumbnail} className="card-img-top" alt="..."/>
+    <div className="card" style={{width: "18rem",height:'30rem' , marginTop:'1rem'}}>
+        <div style={{ height: '18rem', objectFit: 'cover', }}>
+            <img  src={props.thumbnail} className="card-img-top" alt="..." style={{ height: '18rem', objectFit: 'cover', }} />
+        </div>
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
                 <p className="card-text">{props.description}</p>

@@ -5,10 +5,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Carousel} from "react-bootstrap";
 import DefaultCard from "./cards/default_card";
 import Footer from "./cards/footer";
+import {useEffect, useState} from "react";
+import Product from "./Product.tsx";
+import AxiosInstance from '../config/axiosInstance.ts';
+
 
 //import { Carousel } from 'react-bootstrap';
 
-function Home() {
+const  Home:React.FC = ()=> {
+    const [products, setProducts]=useState<Product[]>([]);
+    useEffect(()=>{
+        findAllProducts();
+    }, [])
+    const findAllProducts= async ()=>{
+        const response = await AxiosInstance.get('http://localhost:3000/api/v1/products/find-all?page=1&size=10');
+        setProducts(response.data);
+    }
+
+
     return (
         <>
             <div className='container-fluid align-content-lg-center justify-content-center col-lg-8 col-md-4 col-sm-2 '>
@@ -32,73 +46,12 @@ function Home() {
             </div>
             <br></br>
             <div className='container-fluid align-content-lg-center justify-content-between d-flex flex-wrap col-lg-8 col-md-4 col-sm-2 '>
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
+                {products.map((prod,index)=>(
+                    <DefaultCard title={prod.name} thumbnail={prod.image} description={prod.description} price={prod.unitPrice} key={index} />
+                ))}
+
+
             </div>
-            <br></br>
-            <div className='container-fluid align-content-lg-center justify-content-between d-flex flex-wrap col-lg-8 col-md-4 col-sm-2 '>
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-                <DefaultCard
-                    title="Samsung S23"
-                    description='Thaeffffffffffffaevgqe eqfrafq efegqefris is a wider card with'
-                    thumbnail='https://celltronics.lk/wp-content/uploads/2024/01/Untitled-design-1.png'
-                    price={234.5}
-                />
-            </div>
-            <br></br>
-            <br></br>
-            <br></br>
             <Footer/>
 
 
