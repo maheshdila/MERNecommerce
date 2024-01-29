@@ -6,6 +6,9 @@ import Product from "./components/Product.tsx";
 import Login from "./components/Login/Login";
 
 import Register from "./components/Login/Register";
+import ProductDetails from "./components/ProductDetails";
+
+
 
 
 function App() {
@@ -59,6 +62,7 @@ function App() {
                 <Route path='/login' element={<Login/>}></Route>
                 <Route path='/cart' element={<Login/>}></Route>
                 <Route path='/register' element={<Register/>}></Route>
+                <Route path='/ProductDetails/:id' element={<ProductDetails />}></Route>
 
             </Routes>
         </Router>

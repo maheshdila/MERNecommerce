@@ -1,12 +1,18 @@
 import React, {useState} from "react";
 import AxiosInstance from '../config/axiosInstance.ts';
 import {Link} from "react-router-dom";
+//import { useHistory } from "react-router-dom";
+
+
 
 
 const Login:React.FC = ()=>{
 
     const [email, setEmail]=useState('');
     const [password, setPassword]=useState('');
+    //const history = useHistory();
+    //const history = useHistory();
+
 
 
     const login=async ()=>{
@@ -27,6 +33,9 @@ const Login:React.FC = ()=>{
 
             setEmail('');
             setPassword('');
+            //history.push('/');
+            //history.push('/');
+
 
         }catch (e){
             console.log(e)
