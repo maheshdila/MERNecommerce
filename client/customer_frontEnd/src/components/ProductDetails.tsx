@@ -1,15 +1,48 @@
-// ProductDetails.js
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-const  ProductDetails:React.FC =()=>{
-    const { id } = useParams();
-    // Now 'id' contains the value of the 'id' parameter from the URL
-    console.log('Product ID:', id);
+import AxiosInstance from '../config/axiosInstance';
 
-    return(
-        <>
-          <h1>ProductDetails</h1>
-        </>
-    )
+interface Product {
+    _id: string,
+    name: string,
+    description: string,
+    image: string,
+    unitPrice: number,
+    qtyOnHand: number
+}
+
+const ProductDetails: React.FC = () => {
+    const { id } = useParams();
+    const [product, setProduct] = useState<Product | null>(null);
+
+    useEffect(() => {
+        const fetchProduct = async () => {
+            try {
+                const response = await AxiosInstance.get(`/products/find-by-id/${id}`);
+                setProduct(response.data);
+            } catch (error) {
+                console.error('Error fetching product:', error);
+            }
+        };
+
+        fetchProduct();
+    }, [id]);
+
+    return (
+        <div>
+            {product ? (
+                <>
+                    <h1>{product.name}</h1>
+                    <p>{product.description}</p>
+                    <img src={product.image} alt={product.name} />
+                    <p>Unit Price: ${product.unitPrice}</p>
+                    <p>Quantity on Hand: {product.qtyOnHand}</p>
+                </>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
+    );
 }
 
 export default ProductDetails;
