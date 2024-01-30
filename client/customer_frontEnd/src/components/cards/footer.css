@@ -1,4 +1,4 @@
-.custom-footer{
+ .custom-footer{
     background-color: #0c3483;
     height: 18rem;
 }
@@ -6,3 +6,61 @@
     display :flex;
 
 }
+ /*footer.css
+
+.custom-footer {
+    background-color: #0c3483;
+    height: 16rem;
+
+
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: 5px;
+    margin-top: 50px;
+}
+
+.card {
+    background-color: #0c3483;
+    color: #fff;
+    margin-right: 30px;
+    box-sizing: border-box;
+}
+.card:last-child {
+    margin-right: 0;
+}
+
+.card-title {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+
+}
+
+.social-icon {
+    color: #ccc;
+    margin-right: 10px;
+}
+
+.social-icon:hover {
+    color: #fff;
+}
+.footNote{
+
+    color:#ccc;
+
+}
+*/

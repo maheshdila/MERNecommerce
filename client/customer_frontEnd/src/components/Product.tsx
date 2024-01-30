@@ -276,10 +276,23 @@ const Product:React.FC = ()=>{
 //export default Product;
 
 //import React, { useContext } from "react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import {useEffect, useState} from "react";
+import {Link} from "react-router-dom";
+import DefaultCard from "./cards/default_card";
+import Footer from "./cards/footer";
+import AxiosInstance from "../config/axiosInstance";
 
-const Product: React.FC =()=> {
+const Product: React.FC = () => {
+    const [products, setProducts]=useState<Product[]>([]);
+
+    useEffect(()=>{
+        findAllProducts();
+    }, [])
+    const findAllProducts= async ()=>{
+        const response = await AxiosInstance.get('/products/find-all?page=1&size=10');
+        setProducts(response.data);
+    }
+
 
     /*const styleObj:React.CSSProperties={
         font-size: "20px",
@@ -296,11 +309,14 @@ const Product: React.FC =()=> {
     z-index: 100;
     height: 50px;
     }*/
-    const [menu, setMenu] = useState("shop");
+    const [category, setCategory] = useState("");
     //const { totalCartItems } = useContext(ShopContext);
     return (
-        <div className="navbar">
-            {/*<div className="navbar__logo">
+        <>
+            <nav className="navbar navbar-expand-lg navbar-light bg-opacity-75 bg-light ">
+                <div className="container-fluid justify-content-center ">
+                    <div className="navbar ">
+                        {/*<div className="navbar__logo">
                 <Link to="/">
                     <img src={logo} alt="logo" />
                 </Link>
@@ -308,50 +324,72 @@ const Product: React.FC =()=> {
                 <h3>E_Shopping </h3>
             </div>
 */}
-            <ul className="nav_menu">
-                <li
-                    onClick={() => {
-                        setMenu("shop");
-                    }}
-                    style={{
-                        borderBottom: menu === "shop" ? "4px solid #ff4141" : "none",
-                    }}
-                >
-                    <Link to="/"> Shop</Link>
-                </li>
-                <li
-                    onClick={() => {
-                        setMenu("men");
-                    }}
-                    style={{
-                        borderBottom: menu === "men" ? "4px solid #ff4141" : "none",
-                    }}
-                >
-                    <Link to="/men">Men</Link>
-                </li>
-                <li
-                    onClick={() => {
-                        setMenu("women");
-                    }}
-                    style={{
-                        borderBottom: menu === "women" ? "4px solid #ff4141" : "none",
-                    }}
-                >
-                    <Link to="/women">Women</Link>
-                </li>
-                <li
-                    onClick={() => {
-                        setMenu("kids");
-                    }}
-                    style={{
-                        borderBottom: menu === "kids" ? "4px solid #ff4141" : "none",
-                    }}
-                >
-                    <Link to="/kids">Kids</Link>
-                </li>
-            </ul>
+                        <ul className="nav_menu d-inline-flex justify-content-between align-content-lg-between">
+                            <li
+                                onClick={() => {
+                                    setCategory("");
+                                }}
+                                style={{
+                                    cursor: 'pointer',
+                                    marginInline: "20px",
+                                    borderBottom: category === "" ? "4px solid #ff4141" : "none",
+                                }}
+                            >
+                                <h3> All</h3>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    setCategory("Laptops");
+                                }}
+                                style={{
+                                    cursor: 'pointer',
+                                    marginInline: "20px",
+                                    borderBottom: category === "Laptops" ? "4px solid #ff4141" : "none",
+                                }}
+                            >
+                                <h3>Laptops</h3>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    setCategory("Headphones");
+                                }}
+                                style={{
+                                    cursor: 'pointer',
+                                    marginInline: "20px",
+                                    borderBottom: category === "Headphones" ? "4px solid #ff4141" : "none",
+                                }}
+                            >
+                                <h3> Headphones</h3>
 
-            <div className="navbar__cart">
+                            </li>
+                            <li
+                                onClick={() => {
+                                    setCategory("Tablets");
+                                }}
+                                style={{
+                                    cursor: 'pointer',
+                                    marginInline: "20px",
+                                    borderBottom: category === "Tablets" ? "4px solid #ff4141" : "none",
+                                }}
+                            >
+                                <h3>Tablets</h3>
+                            </li>
+                            <li
+                                onClick={() => {
+                                    setCategory("Other");
+                                }}
+                                style={{
+                                    cursor: 'pointer',
+                                    marginInline: "20px",
+                                    borderBottom: category === "Other" ? "4px solid #ff4141" : "none",
+                                }}
+                            >
+                                <h3>Other</h3>
+                            </li>
+
+                        </ul>
+
+                        {/*<div className="navbar__cart">
                 <Link to="/login">
                     <button>Login</button>
                 </Link>
@@ -360,8 +398,21 @@ const Product: React.FC =()=> {
                 </Link>
 
                 <span className="cart_count">{totalCartItems()}</span>
+            </div>*/}
+                    </div>
+                </div>
+            </nav>
+            <div
+                className='container-fluid align-content-lg-center justify-content-between d-flex flex-wrap col-lg-8 col-md-4 col-sm-2 '>
+                {products.map((prod) => (
+                    <DefaultCard title={prod.name} category={prod.category} thumbnail={prod.image}
+                                 description={prod.description} price={prod.unitPrice} key={prod._id} _id={prod._id}/>
+                ))}
+
+
             </div>
-        </div>
+            <Footer/>
+        </>
     );
 }
 

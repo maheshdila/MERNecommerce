@@ -15,9 +15,25 @@ function DefaultCard(props:DefaultCardData){
     };
     return (
 
-    <div onClick={()=>{
-        redirectToProductDetails(props.category, props._id,);
-    }} className="card" style={{width: "18rem",height:'36srem' , marginTop:'1rem', cursor:'pointer'}} >
+    <div className="card"
+        onClick={()=>{
+            redirectToProductDetails(props.category, props._id,);
+        }}
+        style={{width: "18rem",
+        height:'36srem' ,
+        marginInlineEnd:'0',
+        margin:'2rem',
+        cursor:'pointer',
+        transition: 'transform 0.3s',
+        }}
+         onMouseOver={(e) => {
+             e.currentTarget.style.transform = 'scale(1.1)';
+         }}
+        // Reset transform on hover out
+         onMouseOut={(e) => {
+             e.currentTarget.style.transform = 'scale(1)';
+         }}>
+
         <div style={{ height: '18rem', objectFit: 'cover', }}>
             <img  src={props.thumbnail} className="card-img-top" alt="..." style={{ height: '18rem', objectFit: 'cover', }} />
         </div>
