@@ -33,7 +33,6 @@ function DefaultCard(props:DefaultCardData){
          onMouseOut={(e) => {
              e.currentTarget.style.transform = 'scale(1)';
          }}>
-
         <div style={{ height: '18rem', objectFit: 'cover', }}>
             <img  src={props.thumbnail} className="card-img-top" alt="..." style={{ height: '18rem', objectFit: 'cover', }} />
         </div>
