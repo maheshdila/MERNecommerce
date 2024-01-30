@@ -52,7 +52,7 @@ const deleteById=async (req,resp)=>{
 }
 const findAll=(req,resp)=>{
     try{
-        const {searchText, page=1, size=10}=req.query;
+        const {searchText, category, page=1, size=10}=req.query;
 
         const pageNumber=parseInt(page);
         const pageSize=parseInt(size);
@@ -60,6 +60,9 @@ const findAll=(req,resp)=>{
         const query ={};
         if(searchText){
             query.$text={$search:searchText}
+        }
+        if (category) {
+            query.category = category;
         }
 
         const skip= (pageNumber-1) * pageSize;
@@ -94,6 +97,19 @@ const findCount=(req,resp)=>{
         return resp.status(500).json({'message':'internal server error'});
     }
 }
+
+const searchByCategory = (category) => {
+    try {
+        // Use Mongoose find method to search by category
+        ProductSchema.find({ category: category });
+
+        // Do something with the products (e.g., return them)
+        return products;
+    } catch (error) {
+        console.error('Error searching by category:', error);
+        throw error; // Handle the error appropriately in your application
+    }
+};
 
 module.exports={
     create,findById,update,deleteById,findAll,findAllMin,findCount

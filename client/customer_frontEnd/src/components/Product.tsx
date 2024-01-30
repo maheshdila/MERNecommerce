@@ -1,21 +1,27 @@
+/*
 import React, {ChangeEvent, useEffect, useState} from "react";
 import AxiosInstance from '../config/axiosInstance.ts';
 import {imageDb} from '../config/firebase.ts';
 import { getDownloadURL, listAll, ref, uploadBytes } from "firebase/storage";
+*/
 
 
 //import { storage } from "./firebase";
 
 
+/*
 interface Product{
     _id:string,
     name:string,
+    category:string,
     description:string,
     image:string
     unitPrice:number
     qtyOnHand:number
 }
+*/
 
+/*
 const Product:React.FC = ()=>{
 
     const [products, setProducts]=useState<Product[]>([]);
@@ -28,6 +34,7 @@ const Product:React.FC = ()=>{
 
 
     const [name,setName]=useState('');
+    const [category,setCategory]=useState('');
     const [description,setDescription]=useState('');
     const [unitPrice,setUnitPrice]=useState<number | ''>('');
     const [qtyOnHand,setQtyOnHand]=useState<number | ''>('');
@@ -37,7 +44,7 @@ const Product:React.FC = ()=>{
     }, [])
 
 
-    /* const updateProduct= async ()=>{
+    /!* const updateProduct= async ()=>{
          try{
 
              await axios.put('/customers/update/'+selectedCustomerId,{
@@ -49,7 +56,7 @@ const Product:React.FC = ()=>{
          }catch (e){
              console.log(e)
          }
-     }*/
+     }*!/
 
     const findAllProducts= async ()=>{
         const response = await AxiosInstance.get('/products/find-all?searchText=&page=1&size=10');
@@ -211,5 +218,152 @@ const Product:React.FC = ()=>{
         </>
     )
 }
+*/
+
+/*const Product:React.FC = ()=>{
+    const [menu, setMenu] = useState("shop");
+
+    return(
+        <>
+            <div className="navbar">
+            <ul className="nav_menu">
+                <li
+                    onClick={() => {
+                        setMenu("shop");
+                    }}
+                    style={{
+                        borderBottom: menu === "shop" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+
+                </li>
+                <li
+                    onClick={() => {
+                        setMenu("men");
+                    }}
+                    style={{
+                        borderBottom: menu === "men" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+
+                </li>
+                <li
+                    onClick={() => {
+                        setMenu("women");
+                    }}
+                    style={{
+                        borderBottom: menu === "women" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+
+                </li>
+                <li
+                    onClick={() => {
+                        setMenu("kids");
+                    }}
+                    style={{
+                        borderBottom: menu === "kids" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+
+                </li>
+            </ul>
+            </div>
+        </>
+    )
+}*/
+
+//export default Product;
+
+//import React, { useContext } from "react";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+
+const Product: React.FC =()=> {
+
+    /*const styleObj:React.CSSProperties={
+        font-size: "20px",
+        font-weight: "bold",
+    background-color: rgb(238, 241, 243);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    height: 50px;
+    }*/
+    const [menu, setMenu] = useState("shop");
+    //const { totalCartItems } = useContext(ShopContext);
+    return (
+        <div className="navbar">
+            {/*<div className="navbar__logo">
+                <Link to="/">
+                    <img src={logo} alt="logo" />
+                </Link>
+
+                <h3>E_Shopping </h3>
+            </div>
+*/}
+            <ul className="nav_menu">
+                <li
+                    onClick={() => {
+                        setMenu("shop");
+                    }}
+                    style={{
+                        borderBottom: menu === "shop" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+                    <Link to="/"> Shop</Link>
+                </li>
+                <li
+                    onClick={() => {
+                        setMenu("men");
+                    }}
+                    style={{
+                        borderBottom: menu === "men" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+                    <Link to="/men">Men</Link>
+                </li>
+                <li
+                    onClick={() => {
+                        setMenu("women");
+                    }}
+                    style={{
+                        borderBottom: menu === "women" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+                    <Link to="/women">Women</Link>
+                </li>
+                <li
+                    onClick={() => {
+                        setMenu("kids");
+                    }}
+                    style={{
+                        borderBottom: menu === "kids" ? "4px solid #ff4141" : "none",
+                    }}
+                >
+                    <Link to="/kids">Kids</Link>
+                </li>
+            </ul>
+
+            <div className="navbar__cart">
+                <Link to="/login">
+                    <button>Login</button>
+                </Link>
+                <Link to="/cart">
+                    <img src={cart_icon} alt="cart" />
+                </Link>
+
+                <span className="cart_count">{totalCartItems()}</span>
+            </div>
+        </div>
+    );
+}
+
 export default Product;
 
