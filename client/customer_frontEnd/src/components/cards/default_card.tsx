@@ -25,7 +25,7 @@ function DefaultCard(props:DefaultCardData){
                 <p className="card-text" style={{ maxHeight: '6rem', overflow: 'hidden' }}>{props.description}</p>
                 <h5 className="card-title_price">Rs.{props.price}.00</h5>
                 <div className="d-flex justify-content-between align-items-center">
-                    <button className="btn btn-primary">Add to Cart</button>
+                    <button className="btn btn-primary" >Add to Cart</button>
                     <button className="btn btn-primary">Buy Now</button>
                 </div>
             </div>

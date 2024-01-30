@@ -11,6 +11,7 @@ interface Product{
     _id:string,
     name:string,
     description:string,
+    category:string,
     image:string
     unitPrice:number
     qtyOnHand:number
@@ -29,6 +30,7 @@ const Product:React.FC = ()=>{
 
     const [name,setName]=useState('');
     const [description,setDescription]=useState('');
+    const [category,setCategory]=useState('');
     const [unitPrice,setUnitPrice]=useState<number | ''>('');
     const [qtyOnHand,setQtyOnHand]=useState<number | ''>('');
     //const [imageUrl,setImageUrl]=useState('');
@@ -74,7 +76,7 @@ const Product:React.FC = ()=>{
                         console.log(url);
                         
                         await AxiosInstance.post('/products/create', {
-                            name, description, unitPrice, qtyOnHand, image: url
+                            name, description, unitPrice, category, qtyOnHand, image: url
                         });
                     })
                 })
@@ -92,6 +94,9 @@ const Product:React.FC = ()=>{
             setDescription('');
             setQtyOnHand('');
             setUnitPrice('');
+           // setImage('');
+            setCategory('');
+
 
             findAllProducts();
 
@@ -117,6 +122,7 @@ const Product:React.FC = ()=>{
                             <input value={name} type="text" onChange={(e)=>setName(e.target.value)} className='form-control' id='productName'/>
                         </div>
                     </div>
+
                     <div className="col-12 col-sm-6 col-md-4" style={styleObj}>
                         <div className="form-group">
                             <label htmlFor="price">Unit Price</label>
@@ -136,13 +142,46 @@ const Product:React.FC = ()=>{
                                    type="file" className='form-control' id='image'/>
                         </div>
                     </div>
+                    <div className="col-12 col-sm-6 col-md-4" style={styleObj}>
+
+                        {/*<div className="dropdown col-12 col-sm-6 col-md-4" style={{marginTop:"6%" }}>
+                            <a className="btn btn-secondary dropdown-toggle" href="#" role="button"
+                               id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                Product Category
+                            </a>
+
+                            <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li><a className="dropdown-item" href="#">Mobile Phones</a></li>
+                                <li><a className="dropdown-item" href="#">Laptops</a></li>
+                                <li><a className="dropdown-item" href="#">Tablets</a></li>
+                                <li><a className="dropdown-item" href="#">headphones</a></li>
+                                <li><a className="dropdown-item" href="#">other</a></li>
+                            </ul>
+                        </div>*/}
+                        <div className="col-12 col-sm-6 col-md-4" style={styleObj}>
+                            <div className="dropdown col-12 col-sm-6 col-md-4" >
+                                <a className="btn btn-secondary dropdown-toggle" style={{ marginTop: "50%" }}  role="button"
+                                   id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                    {category || 'Product Category'}
+                                </a>
+
+                                <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <li><a className="dropdown-item" onClick={() => setCategory('Mobile Phones')}>Mobile Phones</a></li>
+                                    <li><a className="dropdown-item" onClick={() => setCategory('Laptops')}>Laptops</a></li>
+                                    <li><a className="dropdown-item" onClick={() => setCategory('Tablets')}>Tablets</a></li>
+                                    <li><a className="dropdown-item" onClick={() => setCategory('Headphones')}>Headphones</a></li>
+                                    <li><a className="dropdown-item" onClick={() => setCategory('Other')}>Other</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="col-12">
                         <div className="form-group">
                             <label htmlFor="description">Description</label>
                             <textarea value={description} onChange={(e)=>setDescription(e.target.value)}  rows={5} className='form-control' id='description'/>
                         </div>
                     </div>
-
                 </div>
                 <br/>
                 <div className="row">

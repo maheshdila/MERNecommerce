@@ -6,7 +6,9 @@ const create=(req,resp)=>{
         description:req.body.description,
         image:req.body.image,
         unitPrice:req.body.unitPrice,
-        qtyOnHand:req.body.qtyOnHand
+        qtyOnHand:req.body.qtyOnHand,
+        category:req.body.category
+
     });
     product.save().then(response=>{
         resp.status(201).json({'message':'Product saved!'});

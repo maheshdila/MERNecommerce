@@ -6,7 +6,7 @@ import Product from "./components/Product.tsx";
 import Login from "./components/Login/Login";
 
 import Register from "./components/Login/Register";
-import ProductDetails from "./components/ProductDetails";
+import ProductDetails from "./components/ProductDetails/ProductDetails";
 
 
 
