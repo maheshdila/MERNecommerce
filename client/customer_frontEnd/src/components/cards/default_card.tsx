@@ -9,7 +9,7 @@ interface DefaultCardData {
     category:string
     description: string,
     price: number | undefined,
-    product:Product
+    item:Product
 }
 function DefaultCard(props:DefaultCardData){
     const navigate = useNavigate();
@@ -47,7 +47,7 @@ function DefaultCard(props:DefaultCardData){
                 <p className="card-text" style={{ maxHeight: '6rem', overflow: 'hidden' }}>{props.description}</p>
                 <h5 className="card-title_price">Rs.{props.price}.00</h5>
                 <div className="d-flex justify-content-center align-items-center">
-                    <button className="btn btn-primary"  onClick={()=>{addItem(props.product)}} >Add to Cart</button>
+                    <button className="btn btn-primary"  onClick={()=>{addItem( props.item,1)}} >Add to Cart</button>
 
                 </div>
             </div>

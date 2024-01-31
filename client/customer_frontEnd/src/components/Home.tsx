@@ -8,13 +8,13 @@ import Footer from "./cards/footer";
 import {useEffect, useState} from "react";
 import Product from "./Product.tsx";
 import AxiosInstance from '../config/axiosInstance.ts';
+import {CartProvider} from "react-use-cart";
 //import { Link, useNavigate } from "react-router-dom";
 
 //import { Carousel } from 'react-bootstrap';
 
 const  Home:React.FC = ()=> {
     const [products, setProducts]=useState<Product[]>([]);
-
     useEffect(()=>{
         findAllProducts();
     }, [])
@@ -46,13 +46,15 @@ const  Home:React.FC = ()=> {
                 </Carousel>
             </div>
             <br></br>
+            <CartProvider>
             <div className='container-fluid align-content-lg-center justify-content-between d-flex flex-wrap col-lg-8 col-md-4 col-sm-2 '>
                 {products.map((prod)=>(
-                    <DefaultCard title={prod.name} category={prod.category} thumbnail={prod.image} description={prod.description} price={prod.unitPrice} key={prod._id}  _id={prod._id} product={prod}/>
+                    <DefaultCard title={prod.name} category={prod.category} thumbnail={prod.image} description={prod.description} price={prod.unitPrice} key={prod._id}  _id={prod._id} item={prod}/>
                 ))}
 
 
             </div>
+                </CartProvider>
             <Footer/>
 
 

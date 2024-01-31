@@ -67,7 +67,6 @@ function App() {
                 <Route path='/' element={<Home/>}></Route>
                 <Route path='/product' element={<Product/>}></Route>
                 <Route path='/login' element={<Login/>}></Route>
-
                 <Route path='/register' element={<Register/>}></Route>
                 <Route path='/ProductDetails/:category/:id' element={<ProductDetails />}></Route>
                 <Route path='/Laptops' element={<Laptops />}></Route>
@@ -77,7 +76,6 @@ function App() {
                 <Route path='/headphones' element={<Headphone/>}></Route>
                 <Route path='/product/:searchText' element={<Headphone/>}></Route>
                 <Route path='/cart' element={<Cart/>}></Route>
-
             </Routes>
         </Router>
     </>
