@@ -5,20 +5,19 @@ import DefaultCard from "./cards/default_card";
 import Footer from "./cards/footer";
 import AxiosInstance from "../config/axiosInstance";
 import {useNavigate} from "react-router-dom";
-
-const Product: React.FC = () => {
-    const [products, setProducts]=useState<Product[]>([]);
+const Laptops: React.FC = () => {
+    const [products, setProducts]=useState<Laptops[]>([]);
     const navigate = useNavigate();
     useEffect(()=>{
         findAllProducts();
     }, [])
     const findAllProducts= async ()=>{
-        const response = await AxiosInstance.get('/products/find-all?page=1&size=10');
+        const response = await AxiosInstance.get('/products/find-all?category=Laptops&page=1&size=10');
         setProducts(response.data);
     }
 
 
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("Laptops");
 
     return (
         <>
@@ -29,6 +28,7 @@ const Product: React.FC = () => {
                             <li
                                 onClick={() => {
                                     setCategory("");
+                                    navigate(`/product`);
                                 }}
                                 style={{
                                     cursor: 'pointer',
@@ -41,7 +41,6 @@ const Product: React.FC = () => {
                             <li
                                 onClick={() => {
                                     setCategory("Laptops");
-                                    navigate(`/Laptops`);
                                 }}
                                 style={{
                                     cursor: 'pointer',
@@ -51,6 +50,7 @@ const Product: React.FC = () => {
                             >
                                 <h3>Laptops</h3>
                             </li>
+
                             <li
                                 onClick={() => {
                                     setCategory("Headphones");
@@ -79,11 +79,9 @@ const Product: React.FC = () => {
                                 <h3> Mobile Phones</h3>
 
                             </li>
-
                             <li
                                 onClick={() => {
                                     setCategory("Tablets");
-                                    navigate('/tablets')
                                 }}
                                 style={{
                                     cursor: 'pointer',
@@ -96,7 +94,6 @@ const Product: React.FC = () => {
                             <li
                                 onClick={() => {
                                     setCategory("Other");
-                                    navigate('/others')
                                 }}
                                 style={{
                                     cursor: 'pointer',
@@ -122,5 +119,5 @@ const Product: React.FC = () => {
     );
 }
 
-export default Product;
+export default Laptops;
 

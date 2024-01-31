@@ -7,11 +7,17 @@ import Login from "./components/Login/Login";
 
 import Register from "./components/Login/Register";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
-
+import Laptops from "./components/Laptops";
+import Mobiles from "./components/Mobiles";
+import Tablets from "./components/Tablets";
+import Headphone from "./components/Headphones";
+import Others from "./components/Others";
+import {useState} from "react";
 
 
 
 function App() {
+    const [searchText,setSearchText] = useState('');
     return <>
         <Router>
 
@@ -37,7 +43,7 @@ function App() {
                             </li>
                             <li>
                                 <form className="d-flex">
-                                    <input className="form-control me-2" type="search" placeholder="Search"
+                                    <input className="form-control me-2" onChange={(event)=>{setSearchText(event.target.value)}} type="search" placeholder="Search"
                                            aria-label="Search" style={{ marginTop: '10px' }}/>
                                     <button className="btn btn-outline-primary" type="submit" style={{ marginTop: '10px' }}>Search</button>
                                 </form>
@@ -63,6 +69,13 @@ function App() {
                 <Route path='/cart' element={<Login/>}></Route>
                 <Route path='/register' element={<Register/>}></Route>
                 <Route path='/ProductDetails/:category/:id' element={<ProductDetails />}></Route>
+                <Route path='/Laptops' element={<Laptops />}></Route>
+                <Route path='/mobiles' element={<Mobiles />}></Route>
+                <Route path='/tablets' element={<Tablets/>}></Route>
+                <Route path='/others' element={<Others/>}></Route>
+                <Route path='/headphones' element={<Headphone/>}></Route>
+                <Route path='/product/:searchText' element={<Headphone/>}></Route>
+
             </Routes>
         </Router>
     </>

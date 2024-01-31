@@ -1,19 +1,20 @@
 
 import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import DefaultCard from "./cards/default_card";
 import Footer from "./cards/footer";
 import AxiosInstance from "../config/axiosInstance";
 import {useNavigate} from "react-router-dom";
 
-const Product: React.FC = () => {
-    const [products, setProducts]=useState<Product[]>([]);
+const Productsearch: React.FC = () => {
+    const [products, setProducts]=useState<Productsearch[]>([]);
     const navigate = useNavigate();
+    const {searchText} = useParams();
     useEffect(()=>{
         findAllProducts();
     }, [])
     const findAllProducts= async ()=>{
-        const response = await AxiosInstance.get('/products/find-all?page=1&size=10');
+        const response = await AxiosInstance.get(`/products/find-all?searchText=${searchText}&page=1&size=10`);
         setProducts(response.data);
     }
 
@@ -122,5 +123,5 @@ const Product: React.FC = () => {
     );
 }
 
-export default Product;
+export default Productsearch;
 
