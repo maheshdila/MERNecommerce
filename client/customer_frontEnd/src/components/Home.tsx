@@ -48,7 +48,7 @@ const  Home:React.FC = ()=> {
             <br></br>
             <div className='container-fluid align-content-lg-center justify-content-between d-flex flex-wrap col-lg-8 col-md-4 col-sm-2 '>
                 {products.map((prod)=>(
-                    <DefaultCard title={prod.name} category={prod.category} thumbnail={prod.image} description={prod.description} price={prod.unitPrice} key={prod._id}  _id={prod._id}/>
+                    <DefaultCard title={prod.name} category={prod.category} thumbnail={prod.image} description={prod.description} price={prod.unitPrice} key={prod._id}  _id={prod._id} product={prod}/>
                 ))}
 
 

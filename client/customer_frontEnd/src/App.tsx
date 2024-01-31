@@ -12,6 +12,7 @@ import Mobiles from "./components/Mobiles";
 import Tablets from "./components/Tablets";
 import Headphone from "./components/Headphones";
 import Others from "./components/Others";
+import Cart from "./components/Cart";
 import {useState} from "react";
 
 
@@ -66,7 +67,7 @@ function App() {
                 <Route path='/' element={<Home/>}></Route>
                 <Route path='/product' element={<Product/>}></Route>
                 <Route path='/login' element={<Login/>}></Route>
-                <Route path='/cart' element={<Login/>}></Route>
+
                 <Route path='/register' element={<Register/>}></Route>
                 <Route path='/ProductDetails/:category/:id' element={<ProductDetails />}></Route>
                 <Route path='/Laptops' element={<Laptops />}></Route>
@@ -75,6 +76,7 @@ function App() {
                 <Route path='/others' element={<Others/>}></Route>
                 <Route path='/headphones' element={<Headphone/>}></Route>
                 <Route path='/product/:searchText' element={<Headphone/>}></Route>
+                <Route path='/cart' element={<Cart/>}></Route>
 
             </Routes>
         </Router>
